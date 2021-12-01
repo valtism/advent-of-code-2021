@@ -69,9 +69,9 @@ npm start 1
 
 ```
 Day 01
-Time part 1: -
-Time part 2: -
-Both parts: -
+Time part 1: - 00:04:24
+Time part 2: - 00:04:09
+Both parts: - 00:08:33
 ```
 
 ```
