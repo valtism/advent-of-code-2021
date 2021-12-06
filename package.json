@@ -14,11 +14,14 @@
   "author": "Dan Wood",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.14.177",
     "@types/node": "^16.11.6",
     "aocrunner": "^1.4.3",
     "prettier": "^2.4.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "engines": {
     "node": ">=16.0.0"
   }
