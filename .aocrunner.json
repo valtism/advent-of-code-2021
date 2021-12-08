@@ -110,13 +110,13 @@
         "attempts": [
           "4"
         ],
-        "time": 0.57
+        "time": 0.81
       },
       "part2": {
         "solved": true,
         "result": "1070188",
         "attempts": [],
-        "time": 3036.23
+        "time": 2838.88
       }
     },
     {

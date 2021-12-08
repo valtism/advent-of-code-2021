@@ -1,4 +1,6 @@
 import run from "aocrunner";
+import { isDeepStrictEqual } from "util";
+import { permutator } from "../utils/index.js";
 const parseInput = (rawInput) => rawInput.split("\n").map((row) => row.split(" | ").map((row2) => row2.split(" ")));
 const part1 = (rawInput) => {
   const input = parseInput(rawInput);
@@ -8,37 +10,16 @@ const part1 = (rawInput) => {
   }
   return count;
 };
-const part2 = (rawInput) => {
-  const input = parseInput(rawInput);
-  let sum = 0;
-  for (const row of input) {
-    const leftSorted = row[0].map((r) => r.split("").sort().join("")).sort();
-    const match = permutations.find((permutation) => {
-      const codes = positionsNumbers.map((nums2) => nums2.map((num) => permutation[num]).sort().join("")).sort();
-      return codes.every((code, i) => code === leftSorted[i]);
-    });
-    const nums = row[1].map((code) => code.split("").map((c) => match.indexOf(c)).sort((a, b) => a - b).toString()).map((numArr) => positionsNumbers.findIndex((value, i) => numArr === value.toString()));
-    sum += Number(nums.join(""));
-  }
-  return sum;
-};
-function permutator(inputArr) {
-  let result = [];
-  const permute = (arr, m = []) => {
-    if (arr.length === 0) {
-      result.push(m);
-    } else {
-      for (let i = 0; i < arr.length; i++) {
-        let curr = arr.slice();
-        let next = curr.splice(i, 1);
-        permute(curr.slice(), m.concat(next));
-      }
-    }
-  };
-  permute(inputArr);
-  return result;
-}
-const positionsNumbers = [
+const segmentArrangements = permutator([
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g"
+]);
+const numberPositions = [
   [0, 1, 2, 4, 5, 6],
   [2, 5],
   [0, 2, 3, 4, 6],
@@ -50,7 +31,26 @@ const positionsNumbers = [
   [0, 1, 2, 3, 4, 5, 6],
   [0, 1, 2, 3, 5, 6]
 ];
-const permutations = permutator(["a", "b", "c", "d", "e", "f", "g"]);
+const part2 = (rawInput) => {
+  const input = parseInput(rawInput);
+  let sum = 0;
+  for (const [inputPatterns, outputPatterns] of input) {
+    const sortedInputPatterns = inputPatterns.map((r) => r.split("").sort().join(""));
+    const validArrangement = segmentArrangements.find((arrangement) => {
+      const signalPatterns = numberPositions.map((numberSegments) => numberSegments.map((segment) => arrangement[segment]).sort().join(""));
+      return isDeepStrictEqual(sortedInputPatterns.sort(), signalPatterns.sort());
+    });
+    const outputNumbers = outputPatterns.map((pattern) => patternToNumber(pattern, validArrangement));
+    const decodedOutput = Number(outputNumbers.join(""));
+    sum += decodedOutput;
+  }
+  return sum;
+};
+function patternToNumber(pattern, arrangment) {
+  const indexes = pattern.split("").map((c) => arrangment.indexOf(c));
+  const orderedIndexes = indexes.sort((a, b) => a - b);
+  return numberPositions.findIndex((value) => isDeepStrictEqual(value, orderedIndexes));
+}
 run({
   part1: {
     tests: [

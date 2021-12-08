@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": [],
-  "sourcesContent": [],
-  "mappings": "",
+  "sources": ["../../src/utils/index.ts"],
+  "sourcesContent": ["/**\n * Root for your util libraries.\n *\n * You can import them in the src/template/index.ts,\n * or in the specific file.\n *\n * Note that this repo uses ES Modules, so you have to explicitly specify\n * .js extension (yes, .js not .ts - even for TypeScript files)\n * for imports that are not imported from node_modules.\n *\n * For example:\n *\n *   correct:\n *\n *     import _ from 'lodash'\n *     import myLib from '../utils/myLib.js'\n *     import { myUtil } from '../utils/index.js'\n *\n *   incorrect:\n *\n *     import _ from 'lodash'\n *     import myLib from '../utils/myLib.ts'\n *     import { myUtil } from '../utils/index.ts'\n *\n *   also incorrect:\n *\n *     import _ from 'lodash'\n *     import myLib from '../utils/myLib'\n *     import { myUtil } from '../utils'\n *\n */\n\nexport function permutator(inputArr: string[]) {\n  let result = [];\n\n  const permute = (arr, m = []) => {\n    if (arr.length === 0) {\n      result.push(m);\n    } else {\n      for (let i = 0; i < arr.length; i++) {\n        let curr = arr.slice();\n        let next = curr.splice(i, 1);\n        permute(curr.slice(), m.concat(next));\n      }\n    }\n  };\n\n  permute(inputArr);\n\n  return result;\n}\n"],
+  "mappings": "AAgCO,oBAAoB,UAAoB;AAC7C,MAAI,SAAS;AAEb,QAAM,UAAU,CAAC,KAAK,IAAI,OAAO;AAC/B,QAAI,IAAI,WAAW,GAAG;AACpB,aAAO,KAAK;AAAA,WACP;AACL,eAAS,IAAI,GAAG,IAAI,IAAI,QAAQ,KAAK;AACnC,YAAI,OAAO,IAAI;AACf,YAAI,OAAO,KAAK,OAAO,GAAG;AAC1B,gBAAQ,KAAK,SAAS,EAAE,OAAO;AAAA;AAAA;AAAA;AAKrC,UAAQ;AAER,SAAO;AAAA;",
   "names": []
 }
