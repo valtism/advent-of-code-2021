@@ -179,16 +179,16 @@
     },
     {
       "part1": {
-        "solved": false,
-        "result": null,
+        "solved": true,
+        "result": "724",
         "attempts": [],
-        "time": null
+        "time": 2.08
       },
       "part2": {
         "solved": false,
-        "result": null,
+        "result": "\n XX  XXX    XX XXX  XXXX XXX  X  X X   \nX  X X  X    X X  X X    X  X X  X X   \nX    X  X    X XXX  XXX  X  X X  X X   \nX    XXX     X X  X X    XXX  X  X X   \nX  X X    X  X X  X X    X X  X  X X   \n XX  X     XX  XXX  XXXX X  X  XX  XXXX\n",
         "attempts": [],
-        "time": null
+        "time": 7.02
       }
     },
     {
