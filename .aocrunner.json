@@ -210,7 +210,7 @@
         "solved": true,
         "result": "429",
         "attempts": [],
-        "time": 37.15
+        "time": 31.22
       },
       "part2": {
         "solved": true,
@@ -219,7 +219,7 @@
           "2180",
           "2851"
         ],
-        "time": 10624.59
+        "time": 9439.39
       }
     },
     {
@@ -241,7 +241,7 @@
         "solved": true,
         "result": "4186",
         "attempts": [],
-        "time": 10.67
+        "time": 8.89
       },
       "part2": {
         "solved": true,
@@ -249,7 +249,7 @@
         "attempts": [
           "1365"
         ],
-        "time": 7.15
+        "time": 7.57
       }
     },
     {

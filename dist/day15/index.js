@@ -73,32 +73,30 @@ const part2 = (rawInput) => {
   }
   const toUpdate = new Set();
   toUpdate.add("0,0");
-  while (toUpdate.size) {
-    toUpdate.forEach((coord) => {
-      const coordValues = allCoords.get(coord);
-      const [x, y] = coord.split(",").map(Number);
-      const neighbours = [
-        { x, y: y - 1 },
-        { x: x - 1, y },
-        { x: x + 1, y },
-        { x, y: y + 1 }
-      ];
-      neighbours.forEach(({ x: x2, y: y2 }) => {
-        const neighbourCoord = `${x2},${y2}`;
-        if (!allCoords.has(neighbourCoord))
-          return;
-        const neighborValues = allCoords.get(neighbourCoord);
-        const newLength = coordValues.shortest + neighborValues.value;
-        if (newLength < neighborValues.shortest) {
-          allCoords.set(neighbourCoord, __spreadProps(__spreadValues({}, neighborValues), {
-            shortest: newLength
-          }));
-          toUpdate.add(neighbourCoord);
-        }
-      });
-      toUpdate.delete(coord);
+  toUpdate.forEach((coord) => {
+    const coordValues = allCoords.get(coord);
+    const [x, y] = coord.split(",").map(Number);
+    const neighbours = [
+      { x, y: y - 1 },
+      { x: x - 1, y },
+      { x: x + 1, y },
+      { x, y: y + 1 }
+    ];
+    neighbours.forEach(({ x: x2, y: y2 }) => {
+      const neighbourCoord = `${x2},${y2}`;
+      if (!allCoords.has(neighbourCoord))
+        return;
+      const neighborValues = allCoords.get(neighbourCoord);
+      const newLength = coordValues.shortest + neighborValues.value;
+      if (newLength < neighborValues.shortest) {
+        allCoords.set(neighbourCoord, __spreadProps(__spreadValues({}, neighborValues), {
+          shortest: newLength
+        }));
+        toUpdate.add(neighbourCoord);
+      }
     });
-  }
+    toUpdate.delete(coord);
+  });
   return allCoords.get(`${input.length * 5 - 1},${input.length * 5 - 1}`).shortest;
 };
 run({

@@ -67,33 +67,31 @@ const part2 = (rawInput: string) => {
   const toUpdate = new Set<string>();
   toUpdate.add("0,0");
 
-  while (toUpdate.size) {
-    toUpdate.forEach((coord) => {
-      const coordValues = allCoords.get(coord);
-      const [x, y] = coord.split(",").map(Number);
-      const neighbours = [
-        { x: x, y: y - 1 },
-        { x: x - 1, y: y },
-        { x: x + 1, y: y },
-        { x: x, y: y + 1 },
-      ];
-      neighbours.forEach(({ x, y }) => {
-        const neighbourCoord = `${x},${y}`;
-        if (!allCoords.has(neighbourCoord)) return;
+  toUpdate.forEach((coord) => {
+    const coordValues = allCoords.get(coord);
+    const [x, y] = coord.split(",").map(Number);
+    const neighbours = [
+      { x: x, y: y - 1 },
+      { x: x - 1, y: y },
+      { x: x + 1, y: y },
+      { x: x, y: y + 1 },
+    ];
+    neighbours.forEach(({ x, y }) => {
+      const neighbourCoord = `${x},${y}`;
+      if (!allCoords.has(neighbourCoord)) return;
 
-        const neighborValues = allCoords.get(neighbourCoord);
-        const newLength = coordValues.shortest + neighborValues.value;
-        if (newLength < neighborValues.shortest) {
-          allCoords.set(neighbourCoord, {
-            ...neighborValues,
-            shortest: newLength,
-          });
-          toUpdate.add(neighbourCoord);
-        }
-      });
-      toUpdate.delete(coord);
+      const neighborValues = allCoords.get(neighbourCoord);
+      const newLength = coordValues.shortest + neighborValues.value;
+      if (newLength < neighborValues.shortest) {
+        allCoords.set(neighbourCoord, {
+          ...neighborValues,
+          shortest: newLength,
+        });
+        toUpdate.add(neighbourCoord);
+      }
     });
-  }
+    toUpdate.delete(coord);
+  });
 
   return allCoords.get(`${input.length * 5 - 1},${input.length * 5 - 1}`)
     .shortest;
