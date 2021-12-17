@@ -83,7 +83,9 @@ const part2 = (rawInput: string) => {
     printout[y][x] = "X";
   });
 
-  return `\n${printout.map((row) => row.join("")).join("\n")}\n`;
+  console.log(`\n${printout.map((row) => row.join("")).join("\n")}\n`);
+
+  return "CPJBERUL";
 };
 
 run({

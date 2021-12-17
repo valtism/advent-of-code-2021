@@ -182,13 +182,13 @@
         "solved": true,
         "result": "724",
         "attempts": [],
-        "time": 2.08
+        "time": 2.66
       },
       "part2": {
-        "solved": false,
-        "result": "\n XX  XXX    XX XXX  XXXX XXX  X  X X   \nX  X X  X    X X  X X    X  X X  X X   \nX    X  X    X XXX  XXX  X  X X  X X   \nX    XXX     X X  X X    XXX  X  X X   \nX  X X    X  X X  X X    X X  X  X X   \n XX  X     XX  XXX  XXXX X  X  XX  XXXX\n",
+        "solved": true,
+        "result": "CPJBERUL",
         "attempts": [],
-        "time": 7.02
+        "time": 7.96
       }
     },
     {

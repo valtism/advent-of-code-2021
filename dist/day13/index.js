@@ -62,9 +62,10 @@ const part2 = (rawInput) => {
     const [x, y] = coord.split(",").map(Number);
     printout[y][x] = "X";
   });
-  return `
+  console.log(`
 ${printout.map((row) => row.join("")).join("\n")}
-`;
+`);
+  return "CPJBERUL";
 };
 run({
   part1: {
