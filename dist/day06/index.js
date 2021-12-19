@@ -21,7 +21,6 @@ const part2 = (rawInput) => {
           counts[i] = births;
           break;
         case 6:
-        case 8:
           counts[i] = counts[i + 1] || 0;
           counts[i] += births || 0;
           break;
